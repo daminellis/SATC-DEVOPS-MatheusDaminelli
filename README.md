@@ -1,4 +1,4 @@
-# SATC0-DEVOPS-MatheusDaminelli
+# SATC-DEVOPS-MatheusDaminelli
 
 1- Diferenças entre DevOps e SRE
 
