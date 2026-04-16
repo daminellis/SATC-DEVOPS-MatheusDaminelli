@@ -1,4 +1,6 @@
 from node:20-alpine
+RUN apk upgrade --no-cache \
+ && npm install -g npm@latest
 WORKDIR /app
 COPY . .
 WORKDIR /app/react-devops-lab
