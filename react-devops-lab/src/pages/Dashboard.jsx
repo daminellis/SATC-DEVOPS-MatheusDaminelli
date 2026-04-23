@@ -37,7 +37,7 @@ function Dashboard() {
 
   return (
     <div className="page">
-      <h1 className="page-title">Dashboard</h1>
+      <h1 className="page-title">Matheus Augusto Daminelli (Quinta-Feira)</h1>
 
       <div className="summary-cards">
         <div className="summary-card">
