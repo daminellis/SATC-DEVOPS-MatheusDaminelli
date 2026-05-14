@@ -32,24 +32,24 @@ jobs:
           cluster_name: ${{ vars.GKE_CLUSTER_NAME }}
           location: ${{ vars.GKE_CLUSTER_LOCATION }}
 
-      - name: Replace vars in deployment.yaml
+      - name: Replace vars in Deployment.yaml
         run: |
-          # Substitui a imagem no deployment.yaml pela nova imagem com tag 0.0.3
-          sed -i 's/##DOCKER_USERNAME##/${{ secrets.DOCKER_USERNAME }}/g' k8s/deployment.yaml
-          sed -i 's/##K8S_NAMESPACE##/${{ vars.K8S_NAMESPACE }}/g' k8s/deployment.yaml
-          sed -i 's/##K8S_TAG##/${{ github.sha }}/g' k8s/deployment.yaml
+          # Substitui a imagem no Deployment.yaml pela nova imagem com tag 0.0.3
+          sed -i 's/##DOCKER_USERNAME##/${{ secrets.DOCKER_USERNAME }}/g' k8s/Deployment.yaml
+          sed -i 's/##K8S_NAMESPACE##/${{ vars.K8S_NAMESPACE }}/g' k8s/Deployment.yaml
+          sed -i 's/##K8S_TAG##/${{ github.sha }}/g' k8s/Deployment.yaml
 
-      - name: Criar namespace se nÃ£o existir
+      - name: Criar namespace se não existir
         run: |
           # Cria namespace ${{ vars.K8S_NAMESPACE }} idempotentemente
           kubectl create namespace ${{ vars.K8S_NAMESPACE }} --dry-run=client -o yaml | kubectl apply -f -
 
       - name: Aplicar manifests Kubernetes
         run: |
-          # Aplica deployment.yaml e service.yaml do diretÃ³rio k8s/
+          # Aplica Deployment.yaml e service.yaml do diretório k8s/
           kubectl apply -f k8s/ -n ${{ vars.K8S_NAMESPACE }}
 
-      # - name: Aguardar rollout do deployment
+      # - name: Aguardar rollout do Deployment
       #   run: |
       #     # Verifica status do rollout (timeout 5min)
-      #     kubectl rollout status deployment/satc-devops -n ${{ vars.K8S_NAMESPACE }} --timeout=300s
+      #     kubectl rollout status Deployment/satc-devops -n ${{ vars.K8S_NAMESPACE }} --timeout=300s

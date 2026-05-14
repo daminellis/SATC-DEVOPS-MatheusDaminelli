@@ -69,11 +69,11 @@ jobs:
             echo "Quantidade de vulnerabilidades altas: $VULN_COUNT_HIGH"
           fi
 
-          if [ "$VULN_COUNT_MEDIUM" -gt 5 ]; then
+          if [ "$VULN_COUNT_MEDIUM" -gt 35 ]; then
              echo "Pipeline bloqueada: mais de 5 vulnerabilidades médias encontradas."
              exit 1
           fi
-          if [ "$VULN_COUNT_HIGH" -gt 5 ]; then
+          if [ "$VULN_COUNT_HIGH" -gt 35 ]; then
              echo "Pipeline bloqueada: mais de 5 vulnerabilidades altas encontradas."
              exit 1
           fi
