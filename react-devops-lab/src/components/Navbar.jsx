@@ -1,9 +1,11 @@
-function Navbar({ currentPage, onNavigate }) {
+import { NavLink } from 'react-router-dom'
+
+function Navbar() {
   const links = [
-    { id: 'dashboard', label: 'Dashboard', icon: '⊞' },
-    { id: 'deployments', label: 'Deployments', icon: '⇧' },
-    { id: 'environment', label: 'Environment', icon: '⚙' },
-    { id: 'health', label: 'Health', icon: '♥' },
+    { to: '/', label: 'Dashboard', icon: '⊞', end: true },
+    { to: '/deployments', label: 'Deployments', icon: '⇧' },
+    { to: '/environment', label: 'Environment', icon: '⚙' },
+    { to: '/health', label: 'Health', icon: '♥' },
   ]
 
   return (
@@ -14,14 +16,15 @@ function Navbar({ currentPage, onNavigate }) {
       </div>
       <ul className="navbar-links">
         {links.map(link => (
-          <li key={link.id}>
-            <button
-              className={`navbar-link ${currentPage === link.id ? 'active' : ''}`}
-              onClick={() => onNavigate(link.id)}
+          <li key={link.to}>
+            <NavLink
+              to={link.to}
+              end={link.end}
+              className={({ isActive }) => `navbar-link ${isActive ? 'active' : ''}`}
             >
               <span className="navbar-icon">{link.icon}</span>
               {link.label}
-            </button>
+            </NavLink>
           </li>
         ))}
       </ul>

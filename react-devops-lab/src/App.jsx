@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Dashboard from './pages/Dashboard'
 import Deployments from './pages/Deployments'
@@ -7,25 +7,21 @@ import Health from './pages/Health'
 import './App.css'
 
 function App() {
-  const [page, setPage] = useState('dashboard')
-
-  const renderPage = () => {
-    switch (page) {
-      case 'dashboard': return <Dashboard />
-      case 'deployments': return <Deployments />
-      case 'environment': return <Environment />
-      case 'health': return <Health />
-      default: return <Dashboard />
-    }
-  }
-
   return (
-    <div className="app-layout">
-      <Navbar currentPage={page} onNavigate={setPage} />
-      <main className="main-content">
-        {renderPage()}
-      </main>
-    </div>
+    <BrowserRouter>
+      <div className="app-layout">
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/deployments" element={<Deployments />} />
+            <Route path="/environment" element={<Environment />} />
+            <Route path="/health" element={<Health />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
