@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Dashboard from './pages/Dashboard'
 import Deployments from './pages/Deployments'
 import Environment from './pages/Environment'
+import Health from './pages/Health'
 import './App.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       case 'dashboard': return <Dashboard />
       case 'deployments': return <Deployments />
       case 'environment': return <Environment />
+      case 'health': return <Health />
       default: return <Dashboard />
     }
   }

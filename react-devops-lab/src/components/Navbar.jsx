@@ -3,6 +3,7 @@ function Navbar({ currentPage, onNavigate }) {
     { id: 'dashboard', label: 'Dashboard', icon: '⊞' },
     { id: 'deployments', label: 'Deployments', icon: '⇧' },
     { id: 'environment', label: 'Environment', icon: '⚙' },
+    { id: 'health', label: 'Health', icon: '♥' },
   ]
 
   return (
