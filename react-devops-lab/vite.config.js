@@ -8,5 +8,6 @@ export default defineConfig({
     host: true,
     port: 4173,
     strictPort: true,
+    allowedHosts: ['.app.devops-satc.online'],
   },
 })
